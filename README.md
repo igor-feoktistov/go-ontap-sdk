@@ -23,3 +23,4 @@ TBD
 ## Examples
 
 Check the included examples from this repository.
+Please note that if you connect to cluster management node, make sure to remove comment from `c.SetVserver("<your vserver name>")` to run API call in vserver scope.
