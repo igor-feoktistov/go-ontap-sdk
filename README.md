@@ -1,4 +1,4 @@
-## go-ontap-sdk: Go library for Netapp cDOT
+## go-ontap-sdk: Go library for NetApp cDOT
 
 `go-ontap-sdk` is a Go library for interfacing with NetApp cDOT API.
 
