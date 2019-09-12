@@ -8,7 +8,7 @@ TBD
 
 ## Installation
 
-In order to install `go-ontap-skd` execute the following command:
+In order to install `go-ontap-sdk` execute the following command:
 
 ```
 go get -v github.com/ifeoktistov/go-ontap-sdk
