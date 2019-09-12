@@ -10,12 +10,12 @@ func main() {
 	c := ontap.NewClient(
 		"https://mycluster.example.com",
 		&ontap.ClientOptions {
+		    Version: "1.160",
 		    BasicAuthUser: "admin",
 		    BasicAuthPassword: "secret",
 		    SSLVerify: false,
 		    Debug: false,
     		    Timeout: 60 * time.Second,
-		    Version: "1.160",
 		},
 	)
 	options := &ontap.AggregateGetOptions {

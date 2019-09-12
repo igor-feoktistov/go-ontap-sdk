@@ -136,6 +136,7 @@ type Client struct {
 	IscsiConnectionGetIter *IscsiConnectionGetIter
 	IscsiInitiatorGetIter  *IscsiInitiatorGetIter
 	IscsiInterfaceGetIter  *IscsiInterfaceGetIter
+	IscsiServiceStatus     *IscsiServiceStatus
 	LunCopyGetIter         *LunCopyGetIter
 	LunCopyStart           *LunCopyStart
 	LunCreateBySize        *LunCreateBySize

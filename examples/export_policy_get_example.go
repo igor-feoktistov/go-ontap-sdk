@@ -10,19 +10,19 @@ func main() {
 	c := ontap.NewClient(
 	    "https://myvserver.example.com",
 	    &ontap.ClientOptions {
+		Version: "1.160",
 		BasicAuthUser: "vsadmin",
 		BasicAuthPassword: "secret",
 		SSLVerify: false,
 		Debug: false,
     		Timeout: 60 * time.Second,
-		Version: "1.160",
 	    },
 	)
 	options := &ontap.ExportPolicyGetOptions {
 		    MaxRecords: 1024,
             	    Query: &ontap.ExportPolicyQuery {
                 	    ExportPolicyInfo: &ontap.ExportPolicyInfo {
-				    Vserver: "svmdurlabgen01spd",
+				    Vserver: "myvserver",
                             },
                     },
 	}
