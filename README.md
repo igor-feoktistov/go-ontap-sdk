@@ -4,7 +4,9 @@
 
 ## Documentation
 
-TBD
+This library implements a subset of NetApp Manageability SDK 9.6 APIs
+
+See Reference Manual for ONTAP 9.6 APIs at https://library.netapp.com/ecm/ecm_download_file/ECMLP2855863
 
 ## Installation
 
