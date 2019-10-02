@@ -122,7 +122,7 @@ func createDirPath(c *ontap.Client, volumeName string, filePath string) (err err
 	return
 }
 
-func createExportPolicyRule(c *ontap.Client, policyName string, clientIP string) (error) {
+func createExportPolicyRule(c *ontap.Client, policyName string, clientIP string) (err error) {
 	options := &ontap.ExportRuleCreateOptions {
 			PolicyName:           policyName,
 			AnonymousUserId:      "0",
@@ -134,11 +134,11 @@ func createExportPolicyRule(c *ontap.Client, policyName string, clientIP string)
             		RwRule:               &[]string{"any"},
             		RoRule:               &[]string{"any"},
 	}
-	_, _, err := c.ExportRuleCreateAPI(options)
-	return err
+	_, _, err = c.ExportRuleCreateAPI(options)
+	return
 }
 
-func deleteExportPolicyRule(c *ontap.Client, policyName string, clientIP string) (error) {
+func deleteExportPolicyRule(c *ontap.Client, policyName string, clientIP string) (err error) {
 	options := &ontap.ExportRuleGetOptions {
 			MaxRecords: 1024,
             		Query: &ontap.ExportRuleQuery {
@@ -152,12 +152,12 @@ func deleteExportPolicyRule(c *ontap.Client, policyName string, clientIP string)
 	if err == nil {
 		if response.Results.NumRecords > 0 {
 			for _, rule := range response.Results.AttributesList.ExportRuleAttributes {
-				_, _, err := c.ExportRuleDestroyAPI(policyName, rule.RuleIndex)
+				_, _, err = c.ExportRuleDestroyAPI(policyName, rule.RuleIndex)
 				if err != nil {
 					break
 				}
 			}
 		}
 	}
-	return err
+	return
 }
