@@ -123,7 +123,10 @@ type Client struct {
 	ExportRuleDestroy      *ExportRuleDestroy
 	ExportRuleGetIter      *ExportRuleGetIter
 	ExportRuleModify       *ExportRuleModify
+	FileCreateDirectory    *FileCreateDirectory
+	FileDeleteDirectory    *FileDeleteDirectory
 	FileDeleteFile         *FileDeleteFile
+	FileGetFileInfo        *FileGetFileInfo
 	FileReadFile           *FileReadFile
 	FileTruncateFile       *FileTruncateFile
 	FileWriteFile          *FileWriteFile
