@@ -139,6 +139,7 @@ type Client struct {
 	IscsiConnectionGetIter *IscsiConnectionGetIter
 	IscsiInitiatorGetIter  *IscsiInitiatorGetIter
 	IscsiInterfaceGetIter  *IscsiInterfaceGetIter
+	IscsiNodeGetName       *IscsiNodeGetName
 	IscsiServiceStatus     *IscsiServiceStatus
 	LunCopyGetIter         *LunCopyGetIter
 	LunCopyStart           *LunCopyStart
@@ -169,6 +170,8 @@ type Client struct {
 	VolumeSetOption        *VolumeSetOption
 	VolumeSize             *VolumeSize
 	VolumeUnmount          *VolumeUnmount
+	VserverGetIter         *VserverGetIter
+	VserverShowAggrGetIter *VserverShowAggrGetIter
 }
 
 type ClientOptions struct {
