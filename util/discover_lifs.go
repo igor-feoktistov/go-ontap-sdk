@@ -3,7 +3,7 @@ package util
 import (
 	"fmt"
 	"net"
-	"go-ontap-sdk/ontap"
+	"github.com/igor-feoktistov/go-ontap-sdk/ontap"
 )
 
 func DiscoverIscsiLIFs(c *ontap.Client, lunPath string, initiatorSubnet string) (lifs []*ontap.NetInterfaceInfo, err error) {
