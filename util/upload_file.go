@@ -6,7 +6,7 @@ import (
     "encoding/hex"
     "path/filepath"
 
-    "go-ontap-sdk/ontap"
+    "github.com/igor-feoktistov/go-ontap-sdk/ontap"
     "github.com/vmware/go-nfs-client/nfs"
     "github.com/vmware/go-nfs-client/nfs/rpc"
 )

@@ -1,7 +1,7 @@
 package util
 
 import (
-	"go-ontap-sdk/ontap"
+	"github.com/igor-feoktistov/go-ontap-sdk/ontap"
 )
 
 func LunExists(c *ontap.Client, lunPath string) (exists bool, err error) {

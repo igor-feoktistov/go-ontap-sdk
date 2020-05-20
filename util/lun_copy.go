@@ -3,7 +3,7 @@ package util
 import (
 	"fmt"
 	"time"
-	"go-ontap-sdk/ontap"
+	"github.com/igor-feoktistov/go-ontap-sdk/ontap"
 )
 
 func LunCopy(c *ontap.Client, srcLunPath string, dstLunPath string) (err error) {

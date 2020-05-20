@@ -1,7 +1,7 @@
 package util
 
 import (
-	"go-ontap-sdk/ontap"
+	"github.com/igor-feoktistov/go-ontap-sdk/ontap"
 )
 
 func IsLunMapped(c *ontap.Client, lunPath string, igroupName string) (mapped bool, err error) {
