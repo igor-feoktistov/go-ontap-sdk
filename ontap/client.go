@@ -126,6 +126,7 @@ type Client struct {
 	FileCreateDirectory    *FileCreateDirectory
 	FileDeleteDirectory    *FileDeleteDirectory
 	FileDeleteFile         *FileDeleteFile
+	FileListDirectoryIter  *FileListDirectoryIter
 	FileGetFileInfo        *FileGetFileInfo
 	FileReadFile           *FileReadFile
 	FileTruncateFile       *FileTruncateFile
