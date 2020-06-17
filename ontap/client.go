@@ -160,6 +160,11 @@ type Client struct {
 	LunSetAttribute        *LunSetAttribute
 	NetInterfaceGetIter    *NetInterfaceGetIter
 	NetRoutesGetIter       *NetRoutesGetIter
+	SnapshotCreate         *SnapshotCreate
+	SnapshotDelete         *SnapshotDelete
+	SnapshotGetIter        *SnapshotGetIter
+	SnapshotListInfo       *SnapshotListInfo
+	SnapshotRestoreVolume  *SnapshotRestoreVolume
 	VolumeAutosizeSet      *VolumeAutosizeSet
 	VolumeContainer        *VolumeContainer
 	VolumeCreate           *VolumeCreate
