@@ -44,7 +44,7 @@ type VolumeCreateOptions struct {
 	LanguageCode               string `xml:"language-code,omitempty"`
 	MaxDirSize                 int    `xml:"max-dir-size,omitempty"`
 	MaxWriteAllocBlocks        int    `xml:"max-write-alloc-blocks,omitempty"`
-	PercentageSnapshotReserve  int    `xml:"percentage-snapshot-reserve,omitempty"`
+	PercentageSnapshotReserve  int    `xml:"percentage-snapshot-reserve"`
 	QosAdaptivePolicyGroupName string `xml:"qos-adaptive-policy-group-name,omitempty"`
 	QosPolicyGroupName         string `xml:"qos-policy-group-name,omitempty"`
 	Size                       string `xml:"size,omitempty"`
