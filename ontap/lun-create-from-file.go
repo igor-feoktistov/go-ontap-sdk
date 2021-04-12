@@ -23,8 +23,8 @@ type LunCreateFromFileOptions struct {
 	PrefixSize              int    `xml:"prefix-size,omitempty"`
 	QosAdaptivePolicyGroup  string `xml:"qos-adaptive-policy-group,omitempty"`
 	QosPolicyGroup          string `xml:"qos-policy-group,omitempty"`
-	SpaceAllocationEnabled  bool   `xml:"space-allocation-enabled,omitempty"`
-	SpaceReservationEnabled bool   `xml:"space-reservation-enabled,omitempty"`
+	SpaceAllocationEnabled  bool   `xml:"space-allocation-enabled"`
+	SpaceReservationEnabled bool   `xml:"space-reservation-enabled"`
 }
 
 type LunCreateFromFileResponse struct {
