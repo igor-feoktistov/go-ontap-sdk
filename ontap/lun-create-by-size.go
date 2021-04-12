@@ -24,8 +24,8 @@ type LunCreateBySizeOptions struct {
 	QosAdaptivePolicyGroup  string `xml:"qos-adaptive-policy-group,omitempty"`
 	QosPolicyGroup          string `xml:"qos-policy-group,omitempty"`
 	Size                    int    `xml:"size,omitempty"`
-	SpaceAllocationEnabled  bool   `xml:"space-allocation-enabled,omitempty"`
-	SpaceReservationEnabled bool   `xml:"space-reservation-enabled,omitempty"`
+	SpaceAllocationEnabled  bool   `xml:"space-allocation-enabled"`
+	SpaceReservationEnabled bool   `xml:"space-reservation-enabled"`
 	UseExactSize            bool   `xml:"use-exact-size,omitempty"`
 }
 
