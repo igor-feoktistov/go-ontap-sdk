@@ -3,6 +3,7 @@ package ontap
 import (
 	"bytes"
 	"context"
+	"errors"
 	"crypto/tls"
 	"encoding/xml"
 	"fmt"
@@ -250,16 +251,20 @@ func (c *Client) NewRequest(method string, body interface{}) (*http.Request, err
 	return req, nil
 }
 
-func (c *Client) Do(req *http.Request, v interface{}) (*http.Response, error) {
+func (c *Client) Do(req *http.Request, v interface{}) (resp *http.Response, erfr error) {
+	var bs []byte
 	ctx, cncl := context.WithTimeout(context.Background(), c.ResponseTimeout)
 	defer cncl()
-	resp, err := checkResp(c.client.Do(req.WithContext(ctx)))
-	if err != nil {
-		return nil, err
+	if resp, err = checkResp(c.client.Do(req.WithContext(ctx))); err != nil {
+	        if errors.Is(err, context.DeadlineExceeded) {
+	                resp, err = checkResp(c.client.Do(req.WithContext(ctx)))
+	        }
 	}
-	bs, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		return nil, err
+		return
+	}
+	if bs, err = ioutil.ReadAll(resp.Body); err != nil {
+		return
 	}
 	resp.Body = ioutil.NopCloser(bytes.NewBuffer(bs))
 	if c.options.Debug {
@@ -269,10 +274,10 @@ func (c *Client) Do(req *http.Request, v interface{}) (*http.Response, error) {
 		defer resp.Body.Close()
 		err = xml.NewDecoder(resp.Body).Decode(v)
 		if err != nil {
-			return nil, err
+			return
 		}
 	}
-	return resp, err
+	return
 }
 
 func (c *Client) SetVserver(vserver string) {
