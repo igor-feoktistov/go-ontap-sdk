@@ -251,7 +251,7 @@ func (c *Client) NewRequest(method string, body interface{}) (*http.Request, err
 	return req, nil
 }
 
-func (c *Client) Do(req *http.Request, v interface{}) (resp *http.Response, erfr error) {
+func (c *Client) Do(req *http.Request, v interface{}) (resp *http.Response, err error) {
 	var bs []byte
 	ctx, cncl := context.WithTimeout(context.Background(), c.ResponseTimeout)
 	defer cncl()
