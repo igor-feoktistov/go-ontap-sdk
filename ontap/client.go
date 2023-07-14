@@ -3,9 +3,9 @@ package ontap
 import (
 	"bytes"
 	"context"
-	"errors"
 	"crypto/tls"
 	"encoding/xml"
+	"errors"
 	"fmt"
 	"io/ioutil"
 	"log"
@@ -108,12 +108,12 @@ func (b *Base) get(base interface{}, r interface{}) (*http.Response, error) {
 }
 
 type Client struct {
-	client             *http.Client
-	BaseURL            *url.URL
-	UserAgent          string
-	options		   *ClientOptions
-	ResponseTimeout	   time.Duration
-	vserver            string
+	client          *http.Client
+	BaseURL         *url.URL
+	UserAgent       string
+	options         *ClientOptions
+	ResponseTimeout time.Duration
+	vserver         string
 
 	AggregateGetIter       *AggregateGetIter
 	ClusterIdentityGet     *ClusterIdentityGet
@@ -132,12 +132,12 @@ type Client struct {
 	FileReadFile           *FileReadFile
 	FileTruncateFile       *FileTruncateFile
 	FileWriteFile          *FileWriteFile
-	IgroupAdd	       *IgroupAdd
-	IgroupCreate	       *IgroupCreate
-	IgroupDestroy	       *IgroupDestroy
-	IgroupGetIter	       *IgroupGetIter
-	IgroupLookupLun	       *IgroupLookupLun
-	IgroupRemove	       *IgroupRemove
+	IgroupAdd              *IgroupAdd
+	IgroupCreate           *IgroupCreate
+	IgroupDestroy          *IgroupDestroy
+	IgroupGetIter          *IgroupGetIter
+	IgroupLookupLun        *IgroupLookupLun
+	IgroupRemove           *IgroupRemove
 	IscsiConnectionGetIter *IscsiConnectionGetIter
 	IscsiInitiatorGetIter  *IscsiInitiatorGetIter
 	IscsiInterfaceGetIter  *IscsiInterfaceGetIter
@@ -151,7 +151,7 @@ type Client struct {
 	LunInitiatorLoggedIn   *LunInitiatorLoggedIn
 	LunGetAttribute        *LunGetAttribute
 	LunGetAttributes       *LunGetAttributes
-	LunGetIter	       *LunGetIter
+	LunGetIter             *LunGetIter
 	LunMap                 *LunMap
 	LunMapListInfo         *LunMapListInfo
 	LunOffline             *LunOffline
@@ -166,11 +166,12 @@ type Client struct {
 	SnapshotGetIter        *SnapshotGetIter
 	SnapshotListInfo       *SnapshotListInfo
 	SnapshotRestoreVolume  *SnapshotRestoreVolume
+	SystemNodeGetIter      *SystemNodeGetIter
 	VolumeAutosizeSet      *VolumeAutosizeSet
 	VolumeContainer        *VolumeContainer
 	VolumeCreate           *VolumeCreate
 	VolumeDestroy          *VolumeDestroy
-	VolumeGetIter	       *VolumeGetIter
+	VolumeGetIter          *VolumeGetIter
 	VolumeMount            *VolumeMount
 	VolumeOffline          *VolumeOffline
 	VolumeOnline           *VolumeOnline
@@ -187,7 +188,7 @@ type ClientOptions struct {
 	SSLVerify         bool
 	Debug             bool
 	Timeout           time.Duration
-	Version		  string
+	Version           string
 }
 
 func DefaultOptions() *ClientOptions {
@@ -203,7 +204,7 @@ func NewClient(endpoint string, options *ClientOptions) *Client {
 	if options == nil {
 		options = DefaultOptions()
 	}
-	httpClient := &http.Client {
+	httpClient := &http.Client{
 		Timeout: options.Timeout,
 		Transport: &http.Transport{
 			TLSClientConfig: &tls.Config{
@@ -256,9 +257,9 @@ func (c *Client) Do(req *http.Request, v interface{}) (resp *http.Response, err 
 	ctx, cncl := context.WithTimeout(context.Background(), c.ResponseTimeout)
 	defer cncl()
 	if resp, err = checkResp(c.client.Do(req.WithContext(ctx))); err != nil {
-	        if errors.Is(err, context.DeadlineExceeded) {
-	                resp, err = checkResp(c.client.Do(req.WithContext(ctx)))
-	        }
+		if errors.Is(err, context.DeadlineExceeded) {
+			resp, err = checkResp(c.client.Do(req.WithContext(ctx)))
+		}
 	}
 	if err != nil {
 		return
