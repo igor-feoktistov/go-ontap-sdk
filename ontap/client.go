@@ -166,6 +166,7 @@ type Client struct {
 	SnapshotGetIter        *SnapshotGetIter
 	SnapshotListInfo       *SnapshotListInfo
 	SnapshotRestoreVolume  *SnapshotRestoreVolume
+	StorageDiskGetIter     *StorageDiskGetIter
 	SystemNodeGetIter      *SystemNodeGetIter
 	VolumeAutosizeSet      *VolumeAutosizeSet
 	VolumeContainer        *VolumeContainer

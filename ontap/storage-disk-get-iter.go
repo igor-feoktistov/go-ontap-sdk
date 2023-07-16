@@ -41,8 +41,27 @@ type StorageDiskGetIterResponseResultAttributesList struct {
 }
 
 type StorageDiskAttributes struct {
-	XMLName  xml.Name `xml:"storage-disk-info"`
-	DiskName string   `xml:"disk-name"`
+	XMLName  xml.Name      `xml:"storage-disk-info"`
+	DiskName string        `xml:"disk-name"`
+	DiskRaid *DiskRaidInfo `xml:"disk-raid-info`
+	DiskUid  string        `xml:"disk-uid"`
+}
+
+type DiskRaidInfo struct {
+	XMLName           xml.Name `xml:"disk-raid-info"`
+	ActiveNodeName    string   `xml:"active-node-name"`
+	ContainerType     string   `xml:"container-type"`
+	OutageIsInFDR     string   `xml:"outage-is-in-fdr"`
+	OutageReason      string   `xml:"outage-reason"`
+	EffectiveDiskType string   `xml:"effective-disk-type"`
+	EffectiveRPM      string   `xml:"effective-rpm"`
+	PhysicalBlocks    string   `xml:"physical-blocks"`
+	Position          string   `xml:"position"`
+	SparePool         string   `xml:"spare-pool"`
+	StandardDiskType  string   `xml:"standard-disk-type"`
+	UsedBlocks        string   `xml:"used-blocks"`
+	ErrorTextList     string   `xml:"error-text-list"`
+	ErrorType         string   `xml:"error-type"`
 }
 
 func (c *Client) StorageDiskGetAPI(options *StorageDiskGetOptions) (*StorageDiskGetResponse, *http.Response, error) {

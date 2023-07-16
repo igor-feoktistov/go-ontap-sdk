@@ -8,11 +8,11 @@ import (
 
 func main() {
 	c := ontap.NewClient(
-		"https://mycluster.example.com",
+		"https://myvserver.example.com",
 		&ontap.ClientOptions{
-			Version:           "1.32",
-			BasicAuthUser:     "umonitor",
-			BasicAuthPassword: "sxZeJs4n",
+			Version:           "1.160",
+			BasicAuthUser:     "vsadmin",
+			BasicAuthPassword: "secret",
 			SSLVerify:         false,
 			Debug:             false,
 			Timeout:           60 * time.Second,
@@ -28,7 +28,8 @@ func main() {
 		if response.Results.NumRecords > 0 {
 			for _, storageDisk := range response.Results.StorageDiskAttributes.DiskDetailsInfo {
 				fmt.Printf("Name: %s\n", storageDisk.DiskName)
-				fmt.Printf("storageDiskAttributes: %+v\n", storageDisk)
+				fmt.Printf("Disk UID: %s\n", storageDisk.DiskUid)
+				fmt.Printf("DiskRaid: %+v\n", storageDisk.DiskRaid)
 			}
 			fmt.Printf("Total Records: %d\n", response.Results.NumRecords)
 		}
